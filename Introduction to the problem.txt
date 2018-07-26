@@ -1,0 +1,5 @@
+A non-linear mixed integer programming problem is developed to establish a distribution plan for catering services of high-speed railways (CSHRs) based on lot-sizing networks. 
+
+The model attempts to determine the locations for producing different types of food products and to control the inventory levels of trains during their trips considering the storage capacities and time-varying demands.
+
+ A Lagrangian substitution-based solution approach is adopted to decompose the model into a mixed integer linear programming model and a sequence of univariate concave models. Computational experiments indicate that the approach performs satisfactorily in terms of computational time and solution quality in real-world situation.
