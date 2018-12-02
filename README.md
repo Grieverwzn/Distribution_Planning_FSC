@@ -18,7 +18,7 @@ The codes consist of three parts:
 
 3. - Data.m provides a toy example 
 
-     需求表 for lot-sizing problem.xlsx shows the basic matrix structure of the toy example
+     需求表 for lot-sizing problem.xlsx shows the basic matrix structure of the toy example。 One can use it for education purpose.
 
    - Data1.m provides a median-scale example (“车次案例.xlsx”)
 
