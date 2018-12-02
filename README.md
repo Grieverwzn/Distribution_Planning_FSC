@@ -18,10 +18,11 @@ The codes consist of three parts:
 
 3. - Data.m provides a toy example 
 
-     需求表 for lot-sizing problem.xlsx shows the basic matrix structure of the toy example。 One can use it for education purpose.
+     “需求表 for lot-sizing problem.xlsx” shows the basic matrix structure of the toy example。 One can use it for education purpose.
 
    - Data1.m provides a median-scale example (“车次案例.xlsx”)
 
-   - Data2.m provedes a large-scale example on the Beijing-Shaing railway corridor. Beijing-Shanghai corridor data.xlsx is the basic timetable that we used. 需求表 for lot-sizing problem.xlsx shows the basic trains considered in the case study. 
+   - Data2.m provedes a large-scale example on the Beijing-Shaing railway corridor. “Beijing-Shanghai corridor data.xlsx” is the basic timetable that we used. “”需求表 for lot-sizing problem.xlsx” shows the basic trains considered in the case study. 
 
-   - Datarand.m can generate different random case studies to test our algorithms. nbStopDistr(Beijing-Guanzhou) and nbStopDistr(Beijing-Shanghai) are distributions generated based on real timetables on the two corridors.
+   - Datarand.m can generate different random case studies to test our algorithms. “nbStopDistr(Beijing-Guanzhou) and “nbStopDistr(Beijing-Shanghai) are distributions generated based on real timetables on the two corridors.
+
