@@ -1,4 +1,4 @@
-function [x1,fv] = GA_Sub_LP(Lower_B,Upper_B,Objective,VariableType,NonbindingConstraint,DemandConstraint,LBNonbindingConstraint,UBNonbindingConstraint,LBDemandConstraint,UBDemandConstraint)
+function [x1,fv] = HCEA_Sub_LP(Lower_B,Upper_B,Objective,VariableType,NonbindingConstraint,DemandConstraint,LBNonbindingConstraint,UBNonbindingConstraint,LBDemandConstraint,UBDemandConstraint)
 cplex=Cplex;
 nb_var=size(Objective,2);
 cplex.Model.sense = 'minimize';

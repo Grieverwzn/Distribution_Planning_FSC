@@ -63,7 +63,8 @@ for t=1:nbTrain
 end
 
 %TrainCapacity=[300,400]*1; 
-TrainCapacity=[0,280]*1; 
+TrainCapacity=[150,250]*1;% 2018.11.20 Xin 
+%TrainCapacity=[0,280]*1; 
 %% Generate random fixed costs
 % 第一行是cold chain; 第二行是ambient meals
 % 每一列是一个Distribution Center
@@ -97,7 +98,7 @@ for t=1:nbTrain
     nbStop=max(TrainLine(t,:));% count the number of stops
     handling_time=zeros(1,nbStop);
     for s=1:nbStop
-        handling_time(s)=unifrnd (0.1,5);
+        handling_time(s)=unifrnd (0.1,5);% 2018.11.20 Xin
     end
    HandlingTime=[HandlingTime; handling_time];
 end   
@@ -134,7 +135,7 @@ Belta=4;
 
 InventoryCost=[unifrnd(3,5) unifrnd(1,3)];
 %Price=[65-5,49-4];
-Price1=[unifrnd(50,70),unifrnd(30,50)]*5;
+Price1=[unifrnd(50,70),unifrnd(30,50)]; % 2018.11.20 Xin
 Price=Price1-InventoryCost;
 end
 

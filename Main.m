@@ -20,12 +20,13 @@ for t=1:nbTrain
             end
         end
 end
-%tic,
-[gafv,gaXX] = GA_Lotsize(TrainCapacity,DCRSMatrix,TrainLine,FixedCost,VariableCost,InventoryCost,Price,Demand,HandlingTime,Congestion,HandleCapacity,Alpha,Belta,VOT,KKK);
-%toc;
-%tic,
+
+tic,
 [ffv,xx1,Objective2]= Lotsizing(TrainCapacity,DCRSMatrix,TrainLine,FixedCost,MVariableCost,InventoryCost,Price,Demand);
-%toc;
+toc;
+tic,
+[FV,xx2,HandleCost]=  HCEA_Lotsizing(xx1,TrainCapacity,DCRSMatrix,TrainLine,FixedCost,VariableCost,InventoryCost,Price,Demand,HandlingTime,Congestion,HandleCapacity,Alpha,Belta,VOT,KKK);
+toc;
 %=====================================Objective1以及不考虑handling cost 时的解===============================
 [~,~,Objective1]= Lotsizing(TrainCapacity,DCRSMatrix,TrainLine,FixedCost,VariableCost,InventoryCost,Price,Demand);
 

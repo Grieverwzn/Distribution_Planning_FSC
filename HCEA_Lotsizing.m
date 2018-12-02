@@ -1,11 +1,11 @@
-function [FV,xx2,HandleCost]=  GA_Lotsizing(xx1,TrainCapacity,DCRSMatrix,TrainLine,FixedCost,VariableCost,InventoryCost,Price,Demand,HandlingTime,Congestion,HandleCapacity,Alpha,Belta,VOT,KKK);
+function [FV,xx2,HandleCost]=  HCEA_Lotsizing(xx1,TrainCapacity,DCRSMatrix,TrainLine,FixedCost,VariableCost,InventoryCost,Price,Demand,HandlingTime,Congestion,HandleCapacity,Alpha,Belta,VOT,KKK);
 %% Parameter setting
 [nbCenter,nbStation]=size(DCRSMatrix);
 [nbTrain,~]=size(TrainLine);
 [nbKind,~]=size(FixedCost);
 
 %% Building up constraints
-[NonbindingConstraint,DemandConstraint,LBNonbindingConstraint,UBNonbindingConstraint,LBDemandConstraint,UBDemandConstraint] = GA_Constraints(TrainCapacity,DCRSMatrix,TrainLine,FixedCost,Demand);
+[NonbindingConstraint,DemandConstraint,LBNonbindingConstraint,UBNonbindingConstraint,LBDemandConstraint,UBDemandConstraint] = HCEA_Constraints(TrainCapacity,DCRSMatrix,TrainLine,FixedCost,Demand);
 
 %% ===== GA Main loop =====
 COND =1;
@@ -61,7 +61,7 @@ while COND
     end
    % F-W algorithm
    parfor ii=1:number_of_population % for every population 
-      [x2,F,HandleCost] = GA_FW_algorithm(LB(ii,:),UB(ii,:),NonbindingConstraint,DemandConstraint,LBNonbindingConstraint,UBNonbindingConstraint,LBDemandConstraint,UBDemandConstraint,TrainCapacity,DCRSMatrix,TrainLine,FixedCost,VariableCost,InventoryCost,Price,Demand,HandlingTime,Congestion,HandleCapacity,Alpha,Belta,VOT,KKK);
+      [x2,F,HandleCost] = HCEA_FW_algorithm(LB(ii,:),UB(ii,:),NonbindingConstraint,DemandConstraint,LBNonbindingConstraint,UBNonbindingConstraint,LBDemandConstraint,UBDemandConstraint,TrainCapacity,DCRSMatrix,TrainLine,FixedCost,VariableCost,InventoryCost,Price,Demand,HandlingTime,Congestion,HandleCapacity,Alpha,Belta,VOT,KKK);
       FV=[FV,F];
       X=[X,x2];
       HC=[HC,HandleCost];
@@ -76,7 +76,7 @@ while COND
     FV_curve=[FV_curve,FV1(1,1)];
     
     iter=iter+1;
-    if iter==100
+    if iter==10;
         COND=0;
     end
     drawnow 
@@ -84,6 +84,6 @@ while COND
 end
 xx2=FV1(1,2:size(FV1,2)-1);
 HandleCost=FV1(1,size(FV1,2));
-FV=FV_curve(100);
+FV=FV_curve(10);
 end
 

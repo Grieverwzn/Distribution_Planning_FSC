@@ -1,4 +1,4 @@
-function [x2,F,HandleCost] = GA_FW_algorithm(Lower_B,Upper_B,NonbindingConstraint,DemandConstraint,LBNonbindingConstraint,UBNonbindingConstraint,LBDemandConstraint,UBDemandConstraint,TrainCapacity,DCRSMatrix,TrainLine,FixedCost,VariableCost,InventoryCost,Price,Demand,HandlingTime,Congestion,HandleCapacity,Alpha,Belta,VOT,KKK)
+function [x2,F,HandleCost] = HCEA_FW_algorithm(Lower_B,Upper_B,NonbindingConstraint,DemandConstraint,LBNonbindingConstraint,UBNonbindingConstraint,LBDemandConstraint,UBDemandConstraint,TrainCapacity,DCRSMatrix,TrainLine,FixedCost,VariableCost,InventoryCost,Price,Demand,HandlingTime,Congestion,HandleCapacity,Alpha,Belta,VOT,KKK)
 %% Parameter setting
 [nbCenter,nbStation]=size(DCRSMatrix);
 [nbTrain,~]=size(TrainLine);
@@ -48,7 +48,7 @@ for k=1:nbKind
 end 
 
 %% The first iteration for F-W algorithm
-[x1,fv] = GA_Sub_LP(Lower_B,Upper_B,Objective1,VariableType,NonbindingConstraint,DemandConstraint,LBNonbindingConstraint,UBNonbindingConstraint,LBDemandConstraint,UBDemandConstraint);
+[x1,fv] = HCEA_Sub_LP(Lower_B,Upper_B,Objective1,VariableType,NonbindingConstraint,DemandConstraint,LBNonbindingConstraint,UBNonbindingConstraint,LBDemandConstraint,UBDemandConstraint);
 a0=size(x1,1)/nbKind;
 a1=max(TrainLine')';
 VarX={};
@@ -65,7 +65,7 @@ for t=1:nbTrain
     VarX=[VarX;varx];
     VarX1=[VarX1;sum(varx)];%将两种商品加总起来
 end
-[F,HandleCost_new,~]=GA_Fitness(x1,Objective2,VarX1,nbKind,nbTrain,TrainLine,FixedCost,VariableCost,InventoryCost,Price,HandlingTime,Congestion,HandleCapacity,Alpha,Belta,VOT,KKK);
+[F,HandleCost_new,~]=HCEA_Fitness(x1,Objective2,VarX1,nbKind,nbTrain,TrainLine,FixedCost,VariableCost,InventoryCost,Price,HandlingTime,Congestion,HandleCapacity,Alpha,Belta,VOT,KKK);
 Fitness=[F];
 
 maximum_FW_iteration=10;
@@ -97,7 +97,7 @@ for kk=1:maximum_FW_iteration
         Objective=[Objective,fixCost,trainProfit];
     end 
 
-    [x2,fv] = GA_Sub_LP(Lower_B,Upper_B,Objective,VariableType,NonbindingConstraint,DemandConstraint,LBNonbindingConstraint,UBNonbindingConstraint,LBDemandConstraint,UBDemandConstraint);
+    [x2,fv] = HCEA_Sub_LP(Lower_B,Upper_B,Objective,VariableType,NonbindingConstraint,DemandConstraint,LBNonbindingConstraint,UBNonbindingConstraint,LBDemandConstraint,UBDemandConstraint);
     VarX={};
     VarX1={};
     for t=1:nbTrain
@@ -112,7 +112,7 @@ for kk=1:maximum_FW_iteration
         VarX=[VarX;varx];
         VarX1=[VarX1;sum(varx)];%将两种商品加总起来
     end
-    [F,HandleCost_new,HandleCost]=GA_Fitness(x2,Objective2,VarX1,nbKind,nbTrain,TrainLine,FixedCost,VariableCost,InventoryCost,Price,HandlingTime,Congestion,HandleCapacity,Alpha,Belta,VOT,KKK);
+    [F,HandleCost_new,HandleCost]=HCEA_Fitness(x2,Objective2,VarX1,nbKind,nbTrain,TrainLine,FixedCost,VariableCost,InventoryCost,Price,HandlingTime,Congestion,HandleCapacity,Alpha,Belta,VOT,KKK);
     x3=x2*(1/kk)+x1*((kk-1)/kk);
     x1=x3;
     Fitness=[Fitness,F];

@@ -1,4 +1,4 @@
-function [F1,HandleCost_new,HandleCost]=GA_Fitness(x,Objective,VarX1,nbKind,nbTrain,TrainLine,FixedCost,VariableCost,InventoryCost,Price,HandlingTime,Congestion,HandleCapacity,Alpha,Belta,VOT,KKK)
+function [F1,HandleCost_new,HandleCost]=HCEA_Fitness(x,Objective,VarX1,nbKind,nbTrain,TrainLine,FixedCost,VariableCost,InventoryCost,Price,HandlingTime,Congestion,HandleCapacity,Alpha,Belta,VOT,KKK)
 
 F1=Objective*x;
 % F=0;
@@ -40,7 +40,7 @@ for t=1:nbTrain
     for ii=1:nbServiceStation
         F1=F1+HandlingCost(HandlingTime{t}(ii),VarX1{t}(ii),Congestion{t}(ii),HandleCapacity{t}(ii),Alpha,Belta,VOT,KKK);
         HandleCost=HandleCost+HandlingCost(HandlingTime{t}(ii),VarX1{t}(ii),Congestion{t}(ii),HandleCapacity{t}(ii),Alpha,Belta,VOT,KKK);
-        HandleCost_new{t}(ii)=GA_dev_HandlingCost(HandlingTime{t}(ii),VarX1{t}(ii),Congestion{t}(ii),HandleCapacity{t}(ii),Alpha,Belta,VOT,KKK);
+        HandleCost_new{t}(ii)=HCEA_dev_HandlingCost(HandlingTime{t}(ii),VarX1{t}(ii),Congestion{t}(ii),HandleCapacity{t}(ii),Alpha,Belta,VOT,KKK);
     end
 end
 end

@@ -1,4 +1,4 @@
-function [NonbindingConstraint,DemandConstraint,LBNonbindingConstraint,UBNonbindingConstraint,LBDemandConstraint,UBDemandConstraint] = GA_Constraints(TrainCapacity,DCRSMatrix,TrainLine,FixedCost,Demand)
+function [NonbindingConstraint,DemandConstraint,LBNonbindingConstraint,UBNonbindingConstraint,LBDemandConstraint,UBDemandConstraint] = HCEA_Constraints(TrainCapacity,DCRSMatrix,TrainLine,FixedCost,Demand)
 [nbCenter,nbStation]=size(DCRSMatrix);
 [nbTrain,~]=size(TrainLine);
 [nbKind,~]=size(FixedCost);
