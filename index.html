@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>visualization</title>
+        <link rel = "stylesheet" href = "css/index.css">
+    </head>
+    <body>
+        <!--header-->
+        <header>
+            <h1>DATA VISUALIZATION</h1>
+            <div class="showTime"></div>
+            <script>
+                var t = null; 
+                t = setTimeout(time, 1000); //setTimeout(code, delay) the unit of delay is milesecond 
+                function time() {
+                    clearTimeout(t); 
+                    dt = new Date();
+                    var y = dt.getFullYear();
+                    var mt = dt.getMonth() + 1;
+                    var day = dt.getDate();
+                    var h = dt.getHours();
+                    var m = dt.getMinutes();
+                    var s = dt.getSeconds();
+                    document.querySelector(".showTime").innerHTML = "Date:" + mt +'-' + day + '-' + y + ' Time:' + h +":" + m +":" + s; 
+                    t = setTimeout(time,1000);
+                }
+            </script>
+        </header>
+        <div class ="column">
+            <div id="container"></div>
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+        <script src="https://code.highcharts.com/maps/modules/series-on-point.js"></script>
+        <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
+        <script src="https://code.highcharts.com/maps/modules/accessibility.js"></script>
+        <script src = "js/index.js"></script>
+    </body>
+</html>
